@@ -5,13 +5,15 @@ import Webcam from "react-webcam";
 const CaptureComponent = ({ onCapture }) => {
   const webcamRef = useRef(null);
   const [isCapturing, setIsCapturing] = useState(false);
+  const [capturedImage, setCapturedImage] = useState(null);
 
   const capture = () => {
     const imageData = webcamRef.current.getScreenshot();
     if (imageData) {
-      onCapture(imageData);
+      saveImageToDevice(imageData);
+      setCapturedImage(imageData); // Set the captured image
+      setIsCapturing(false);
     }
-    setIsCapturing(false);
   };
 
   const startCapture = () => {
@@ -22,16 +24,36 @@ const CaptureComponent = ({ onCapture }) => {
     setIsCapturing(false);
   };
 
+  const saveImageToDevice = (imageData) => {
+    const link = document.createElement("a");
+    link.href = imageData;
+    link.download = "captured_image.jpeg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
       {isCapturing ? (
         <div>
           <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
-          <button onClick={capture}>Capture</button>
-          <button onClick={cancelCapture}>Cancel</button>
+          <button className="mt-2" onClick={capture}>
+            Capture
+          </button>
+          <button className="mt-2 pl-9" onClick={cancelCapture}>
+            Cancel
+          </button>
         </div>
       ) : (
-        <button onClick={startCapture}>Take Picture</button>
+        <div>
+          <button className="mt-2" onClick={startCapture}>
+            Take a Picture
+          </button>
+          {capturedImage && (
+            <img className="mt-2" src={capturedImage} alt="Captured" />
+          )}{" "}
+        </div>
       )}
     </div>
   );

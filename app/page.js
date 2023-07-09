@@ -1,40 +1,15 @@
 "use client";
-import React, { useState } from "react";
 import CaptureComponent from "@/components/CaptureComponent";
-import BackgroundRemovalComponent from "@/components/ImageBackgroundRemoval";
+import ImageBackgroundRemoval from "@/components/ImageBackgroundRemoval";
+import React from "react";
 
 const Start = () => {
-  const [objectCaptured, setObjectCaptured] = useState(null);
-  const [objectWithBackgroundRemoved, setObjectWithBackgroundRemoved] =
-    useState(null);
-
-  const handleCapture = (imageData) => {
-    setObjectCaptured(imageData);
-  };
-
-  const handleBackgroundRemoval = async () => {
-    // Assuming you have a Background Removal component that accepts an image and returns the image with the background removed
-    const processedImage = await BackgroundRemovalComponent(objectCaptured);
-    setObjectWithBackgroundRemoved(processedImage);
-  };
-
   return (
-    <div>
-      {objectCaptured ? (
-        <>
-          <img src={objectCaptured} alt="Captured Object" />
-          <button onClick={handleBackgroundRemoval}>Remove Background</button>
-        </>
-      ) : (
-        <CaptureComponent onCapture={handleCapture} />
-      )}
-
-      {objectWithBackgroundRemoved && (
-        <img
-          src={objectWithBackgroundRemoved}
-          alt="Object with Background Removed"
-        />
-      )}
+    <div className="flex flex-col items-center justify-center min-h-screen mt-2 pb-4">
+      <span>
+        <CaptureComponent />
+        <ImageBackgroundRemoval />
+      </span>
     </div>
   );
 };
