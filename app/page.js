@@ -1,7 +1,6 @@
-"use client";
+import React from "react";
 import CaptureComponent from "@/components/CaptureComponent";
 import ImageBackgroundRemoval from "@/components/ImageBackgroundRemoval";
-import React from "react";
 
 const Start = () => {
   return (
