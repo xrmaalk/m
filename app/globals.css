@@ -18,12 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to right, #fdd835, #9c27b0);
 
   /* Color Palette */
   .bg-empower-1 {
@@ -50,3 +45,12 @@ body {
     background-image: linear-gradient(to right, #fdd835, #9c27b0);
   }
 }
+/*
+color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+*/

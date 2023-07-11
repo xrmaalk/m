@@ -48,7 +48,7 @@ const CaptureComponent = ({ onCapture }) => {
       ) : (
         <div>
           <button className="mt-2" onClick={startCapture}>
-            Take a Picture
+            Capture Image
           </button>
           {capturedImage && (
             <img className="mt-2" src={capturedImage} alt="Captured" />

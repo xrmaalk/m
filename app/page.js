@@ -4,10 +4,10 @@ import ImageBackgroundRemoval from "@/components/ImageBackgroundRemoval";
 
 const Start = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen mt-2 pb-4">
-      <span>
-        <CaptureComponent />
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <span className="mt-9">
         <ImageBackgroundRemoval />
+        <CaptureComponent />
       </span>
     </div>
   );
